@@ -1,6 +1,7 @@
 package eu.hem.euler.project;
 
-import java.time.Duration;
+import static eu.hem.euler.project.ProcessUtils.printDuration;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -11,7 +12,7 @@ public class P31CoinSums {
 
 	public static void main(String[] args) {
 		System.out.println(partitions(200, Arrays.asList(200, 100, 50, 20, 10, 5, 2, 1)));
-		System.out.println("duration=" + ProcessHandle.current().info().totalCpuDuration().orElse(Duration.ofMillis(0)).toMillis() + "ms");
+		printDuration();
 	}
 
 	public static int partitions(int target) {

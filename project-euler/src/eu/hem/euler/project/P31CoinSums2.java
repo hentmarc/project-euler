@@ -1,6 +1,6 @@
 package eu.hem.euler.project;
 
-import java.time.Duration;
+import static eu.hem.euler.project.ProcessUtils.printDuration;
 
 public class P31CoinSums2 {
 
@@ -15,6 +15,6 @@ public class P31CoinSums2 {
 			}
 		}
 		System.out.println(ways[ways.length - 1]);
-		System.out.println("duration=" + ProcessHandle.current().info().totalCpuDuration().orElse(Duration.ofMillis(0)).toMillis() + "ms");
+		printDuration();
 	}
 }
