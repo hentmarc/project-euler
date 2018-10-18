@@ -31,6 +31,7 @@ public class P35CircularPrimes {
 				}
 			}
 		}
+		System.out.println(circularPrimes);
 		System.out.println(circularPrimes.size());
 		printDuration();
 
