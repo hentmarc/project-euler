@@ -1,6 +1,12 @@
 package eu.hem.euler.project;
 
-import static java.lang.Math.sqrt;
+import static java.lang.Math.*;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class PrimeUtils {
 
@@ -28,5 +34,103 @@ public class PrimeUtils {
 		}
 
 		return true;
+	}
+
+	public static List<Long> primeFactors(long n) {
+		List<Long> factors = new ArrayList<>();
+
+		while (n % 2 == 0) {
+			factors.add(2L);
+			n /= 2;
+		}
+
+		while (n % 3 == 0) {
+			factors.add(3L);
+			n /= 3;
+		}
+
+		for (long i = 5; i <= sqrt(n); i += 6) {
+			while (n % i == 0) {
+				factors.add(i);
+				n /= i;
+			}
+			while (n % (i + 2) == 0) {
+				factors.add(i + 2);
+				n /= (i + 2);
+			}
+		}
+
+		if (n > 1) {
+			factors.add(n);
+		}
+
+		return factors;
+	}
+
+	public static int divisors(long n) {
+		int count = 1;
+		List<Long> factors = primeFactors(n);
+		Set<Long> distinctFactors = new HashSet<>(factors);
+
+		for (long l : distinctFactors) {
+			count *= (Collections.frequency(factors, l) + 1);
+		}
+
+		return count;
+	}
+
+	public static List<Integer> properDivisors(int n) {
+		List<Integer> divisors = new ArrayList<>();
+
+		int limit = (int) ceil(sqrt(n));
+		int shift = n % 2 == 0 ? 1 : 2;
+		int start = n % 2 == 0 ? 2 : 3;
+
+		divisors.add(1);
+
+		if (n > 1 && limit * limit == n) {
+			divisors.add(limit);
+		}
+
+		for (int i = start; i < limit; i += shift) {
+			if (n % i == 0) {
+				divisors.add(i);
+				divisors.add(n / i);
+			}
+		}
+
+		return divisors;
+	}
+
+	public static int sumOfProperDivisors(int n) {
+		int sum = 1;
+		int limit = (int) ceil(sqrt(n));
+		int shift = n % 2 == 0 ? 1 : 2;
+		int start = n % 2 == 0 ? 2 : 3;
+
+		if (n > 1 && limit * limit == n) {
+			sum += limit;
+		}
+
+		for (int i = start; i < limit; i += shift) {
+			if (n % i == 0) {
+				sum += i;
+				sum += n / i;
+			}
+		}
+
+		return sum;
+	}
+
+	public static boolean isPerfect(int n) {
+		return sumOfProperDivisors(n) == n;
+	}
+
+	public static boolean isAbudant(int n) {
+		return sumOfProperDivisors(n) > n;
+	}
+
+	public static boolean isDeficient(int n) {
+		return sumOfProperDivisors(n) < n;
 	}
 }

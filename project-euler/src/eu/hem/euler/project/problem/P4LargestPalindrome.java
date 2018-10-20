@@ -1,0 +1,25 @@
+package eu.hem.euler.project.problem;
+
+public class P4LargestPalindrome {
+
+	public static void main(String[] args) {
+
+		int largestPalindrome = 1;
+		
+		for (int i = 999; i > 99; i--) {
+			for (int j = i; j > 99; j--) {
+				if (i * j > largestPalindrome && isPalindorme(i * j) && largestPalindrome < i * j) {
+					largestPalindrome = i * j;
+				}
+			}
+		}
+		System.out.println(largestPalindrome);
+	}
+	
+	public static boolean isPalindorme(int n) {
+		String s = Integer.toString(n);
+		String s2 = new StringBuilder(s).reverse().toString();
+		return s.equals(s2);
+	}
+
+}
