@@ -1,6 +1,6 @@
 package eu.hem.euler.project.problem;
 
-import static eu.hem.euler.project.PrimeUtils.isPrime;
+import static eu.hem.euler.project.util.PrimeUtils.isPrime;
 import static java.math.BigDecimal.ONE;
 import static java.math.BigDecimal.valueOf;
 

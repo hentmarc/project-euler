@@ -1,4 +1,4 @@
-package eu.hem.euler.project;
+package eu.hem.euler.project.util;
 
 import static java.math.BigInteger.ONE;
 import static java.math.BigInteger.TEN;

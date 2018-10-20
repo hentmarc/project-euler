@@ -1,6 +1,6 @@
 package eu.hem.euler.project;
 
-import static eu.hem.euler.project.EulerUtils.*;
+import static eu.hem.euler.project.util.EulerUtils.*;
 
 public class Test {
 	

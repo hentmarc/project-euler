@@ -1,6 +1,6 @@
 package eu.hem.euler.project.problem;
 
-import static eu.hem.euler.project.EulerUtils.factor;
+import static eu.hem.euler.project.util.EulerUtils.factor;
 
 import java.math.BigInteger;
 

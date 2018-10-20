@@ -1,6 +1,6 @@
 package eu.hem.euler.project.problem;
 
-import static eu.hem.euler.project.EulerUtils.countDigits;
+import static eu.hem.euler.project.util.EulerUtils.countDigits;
 import static java.math.BigInteger.ONE;
 
 import java.math.BigInteger;

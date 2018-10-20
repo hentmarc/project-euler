@@ -1,6 +1,6 @@
 package eu.hem.euler.project.problem;
 
-import static eu.hem.euler.project.PrimeUtils.isAbudant;
+import static eu.hem.euler.project.util.PrimeUtils.isAbudant;
 
 import java.time.Duration;
 import java.util.ArrayList;

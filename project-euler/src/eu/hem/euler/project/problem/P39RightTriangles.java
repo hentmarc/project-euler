@@ -1,4 +1,4 @@
-package eu.hem.euler.project;
+package eu.hem.euler.project.problem;
 
 import java.util.HashMap;
 import java.util.Map;

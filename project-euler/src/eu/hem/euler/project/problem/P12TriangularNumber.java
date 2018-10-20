@@ -1,6 +1,6 @@
 package eu.hem.euler.project.problem;
 
-import static eu.hem.euler.project.PrimeUtils.divisors;
+import static eu.hem.euler.project.util.PrimeUtils.divisors;
 
 public class P12TriangularNumber {
 

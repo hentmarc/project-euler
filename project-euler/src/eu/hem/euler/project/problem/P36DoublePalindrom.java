@@ -1,6 +1,6 @@
 package eu.hem.euler.project.problem;
 
-import static eu.hem.euler.project.EulerUtils.isPalindorme;
+import static eu.hem.euler.project.util.EulerUtils.isPalindorme;
 
 public class P36DoublePalindrom {
 

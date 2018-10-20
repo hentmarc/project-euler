@@ -1,8 +1,8 @@
-package eu.hem.euler.project;
+package eu.hem.euler.project.problem;
 
-import static eu.hem.euler.project.EulerUtils.isPandigital;
-import static eu.hem.euler.project.PrimeUtils.isPrime;
-import static eu.hem.euler.project.ProcessUtils.printDuration;
+import static eu.hem.euler.project.util.EulerUtils.isPandigital;
+import static eu.hem.euler.project.util.PrimeUtils.isPrime;
+import static eu.hem.euler.project.util.ProcessUtils.printDuration;
 
 public class P41PandigitalPrime {
 

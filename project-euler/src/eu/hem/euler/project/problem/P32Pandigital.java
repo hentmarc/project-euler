@@ -1,6 +1,6 @@
 package eu.hem.euler.project.problem;
 
-import static eu.hem.euler.project.EulerUtils.digits;
+import static eu.hem.euler.project.util.EulerUtils.digits;
 
 import java.util.ArrayList;
 import java.util.HashSet;

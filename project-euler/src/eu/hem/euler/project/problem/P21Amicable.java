@@ -1,6 +1,6 @@
 package eu.hem.euler.project.problem;
 
-import static eu.hem.euler.project.PrimeUtils.*;
+import static eu.hem.euler.project.util.PrimeUtils.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;

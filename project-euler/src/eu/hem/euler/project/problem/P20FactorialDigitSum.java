@@ -1,7 +1,7 @@
 package eu.hem.euler.project.problem;
 
-import static eu.hem.euler.project.EulerUtils.factor;
-import static eu.hem.euler.project.EulerUtils.sumDigits;
+import static eu.hem.euler.project.util.EulerUtils.factor;
+import static eu.hem.euler.project.util.EulerUtils.sumDigits;
 
 public class P20FactorialDigitSum {
 	
