@@ -1,6 +1,6 @@
 package eu.hem.euler.project.problem;
 
-import static eu.hem.euler.project.util.EulerUtils.digits;
+import static eu.hem.euler.project.util.DigitUtils.digits;
 import static eu.hem.euler.project.util.EulerUtils.factor;
 
 public class P34DigitFactorials {

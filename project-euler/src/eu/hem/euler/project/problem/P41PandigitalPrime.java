@@ -1,6 +1,6 @@
 package eu.hem.euler.project.problem;
 
-import static eu.hem.euler.project.util.EulerUtils.isPandigital;
+import static eu.hem.euler.project.util.DigitUtils.isPandigital;
 import static eu.hem.euler.project.util.PrimeUtils.isPrime;
 import static eu.hem.euler.project.util.ProcessUtils.printDuration;
 

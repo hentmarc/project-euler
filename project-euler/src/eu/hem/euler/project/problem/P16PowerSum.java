@@ -1,6 +1,6 @@
 package eu.hem.euler.project.problem;
 
-import static eu.hem.euler.project.util.EulerUtils.sumDigits;
+import static eu.hem.euler.project.util.DigitUtils.sumDigits;
 import static java.math.BigInteger.TWO;
 
 public class P16PowerSum {
