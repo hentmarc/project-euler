@@ -1,7 +1,7 @@
 package eu.hem.euler.project.problem;
 
+import static eu.hem.euler.project.util.EulerUtils.isPentagonal;
 import static eu.hem.euler.project.util.ProcessUtils.printDuration;
-import static java.lang.Math.sqrt;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,30 +17,10 @@ public class P44Pentagonal {
 				int pi = pentagonals.get(i);
 				if (pentagonals.contains(p - pi) && isPentagonal(p + pi)) {
 					System.out.println(p - pi);
+					printDuration();
+					return;
 				}
 			}
 		}
-		printDuration();
-	}
-	
-	public static int nextPentagonal(int n, int p) {
-		return p + 3 * n + 1; //P(n+1) = P(n) + 3n + 1
-	}
-
-	public static int pentagonal(int n) {
-		return n * (3 * n - 1) / 2;
-	}
-
-	public static boolean isPentagonal(int p) {
-		double start = sqrt(2 / 3 * p); // n > sqrt(2/3p)
-		double end = sqrt(p); // n < sqrt(p)
-		for (int i = (int) start; i < end; i++) {
-			if (pentagonal(i) == p) {
-				return true;
-			} else if (pentagonal(i) > p) {
-				return false;
-			}
-		}
-		return false;
 	}
 }

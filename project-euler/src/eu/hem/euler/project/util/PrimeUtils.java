@@ -38,6 +38,10 @@ public class PrimeUtils {
 
 	public static List<Long> primeFactors(long n) {
 		List<Long> factors = new ArrayList<>();
+		
+		if (n < 2) {
+			return factors;
+		}
 
 		while (n % 2 == 0) {
 			factors.add(2L);
