@@ -9,7 +9,7 @@ import java.util.Set;
 public class P47DistinctFactors {
 
 	public static void main(String[] args) {
-		for (int i = 1; i < 1_000_000; i++) {
+		for (long i = 1; i < 1_000_000; i++) {
 			Set<Long> distinctFactors1 = new HashSet<>(primeFactors(i));
 			Set<Long> distinctFactors2 = new HashSet<>(primeFactors(i + 1));
 			Set<Long> distinctFactors3 = new HashSet<>(primeFactors(i + 2));

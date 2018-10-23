@@ -36,9 +36,44 @@ public class PrimeUtils {
 		return true;
 	}
 
+	public static List<Integer> primeFactors(int n) {
+		List<Integer> factors = new ArrayList<>();
+
+		if (n < 2) {
+			return factors;
+		}
+
+		while (n % 2 == 0) {
+			factors.add(2);
+			n /= 2;
+		}
+
+		while (n % 3 == 0) {
+			factors.add(3);
+			n /= 3;
+		}
+
+		for (int i = 5; i <= sqrt(n); i += 6) {
+			while (n % i == 0) {
+				factors.add(i);
+				n /= i;
+			}
+			while (n % (i + 2) == 0) {
+				factors.add(i + 2);
+				n /= (i + 2);
+			}
+		}
+
+		if (n > 1) {
+			factors.add(n);
+		}
+
+		return factors;
+	}
+
 	public static List<Long> primeFactors(long n) {
 		List<Long> factors = new ArrayList<>();
-		
+
 		if (n < 2) {
 			return factors;
 		}
@@ -137,4 +172,14 @@ public class PrimeUtils {
 	public static boolean isDeficient(int n) {
 		return sumOfProperDivisors(n) < n;
 	}
+
+	public static int gcd(int n, int m) {
+		int gcd = 1;
+		List<Integer> factorsN = primeFactors(n);
+		List<Integer> factorsM = primeFactors(m);
+		factorsN.retainAll(factorsM);
+		gcd = factorsN.stream().reduce(1, (a, b) -> a * b);
+		return gcd;
+	}
+
 }
