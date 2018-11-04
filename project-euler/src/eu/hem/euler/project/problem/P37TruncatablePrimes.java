@@ -10,7 +10,7 @@ public class P37TruncatablePrimes {
 		int sum = 0;
 		
 		System.out.print("Truncatable primes:");
-		for (int i = 10; count < 11 && i < Integer.MAX_VALUE; i++) {
+		for (int i = 23; count < 11 && i < Integer.MAX_VALUE; i += 2) {
 			if (isTruncatablePrime(i)) {
 				count++;
 				sum += i;
