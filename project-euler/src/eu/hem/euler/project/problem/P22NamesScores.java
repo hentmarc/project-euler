@@ -1,5 +1,7 @@
 package eu.hem.euler.project.problem;
 
+import static eu.hem.euler.project.util.EulerUtils.wordValue;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -21,7 +23,7 @@ public class P22NamesScores {
 			int sum = 0;
 
 			for (int i = 0; i < names.size(); i++) {
-				sum += (i + 1) * value(names.get(i));
+				sum += (i + 1) * wordValue(names.get(i));
 			}
 
 			System.out.println(sum);
@@ -31,11 +33,4 @@ public class P22NamesScores {
 		}
 	}
 
-	public static int value(String s) {
-		int value = 0;
-		for (char c : s.toCharArray()) {
-			value += c - 'A' + 1;
-		}
-		return value;
-	}
 }

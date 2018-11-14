@@ -42,11 +42,8 @@ public class DigitUtils {
 		return b.toString().length();
 	}
 
-	public static boolean isPandigital(int n) {
+	public static boolean isPandigital1To9(int n) {
 		List<Integer> digits = digits(n);
-		if (digits.size() > 9) {
-			return false;
-		}
 		List<Integer> sample = IntStream.rangeClosed(1, digits.size()).boxed().collect(Collectors.toList());
 		digits.sort(null);
 		return sample.equals(digits);

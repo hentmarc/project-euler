@@ -1,6 +1,7 @@
 package eu.hem.euler.project.util;
 
 import static java.lang.Math.ceil;
+import static java.lang.Math.floor;
 import static java.lang.Math.sqrt;
 import static java.math.BigInteger.ONE;
 import static java.math.BigInteger.TWO;
@@ -41,5 +42,22 @@ public class EulerUtils {
 			}
 		}
 		return false;
+	}
+	
+	public static boolean isTriangular(int t) {
+		// t(n) = n(n+1)/2
+		// 2t(n) = n(n+1)
+		// n < sqrt(2t(n)) < n+1
+
+		int n = (int) floor(sqrt(2 * t));
+		return t == n * (n + 1) / 2;
+	}
+	
+	public static int wordValue(String s) {
+		int value = 0;
+		for (char c : s.toCharArray()) {
+			value += c - 'A' + 1;
+		}
+		return value;
 	}
 }

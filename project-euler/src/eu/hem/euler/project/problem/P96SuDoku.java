@@ -4,12 +4,15 @@ import static eu.hem.euler.project.util.ProcessUtils.printDuration;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class P96SuDoku {
+	
+	private static final Set<Integer> RANGE = IntStream.rangeClosed(1, 9).boxed().collect(Collectors.toSet());
 
 	public static void main(String[] args) {
 		try (Scanner sc = new Scanner(new File("resources/p096_sudoku.txt"))) {
@@ -65,7 +68,7 @@ public class P96SuDoku {
 		if (sudoku[i][j] != 0) {
 			return null;
 		}
-		Set<Integer> candidates = IntStream.rangeClosed(1, 9).boxed().collect(Collectors.toSet());
+		Set<Integer> candidates = new HashSet<>(RANGE);
 
 		for (int n = 0; n < 9; n++) {
 			candidates.remove(sudoku[i][n]);

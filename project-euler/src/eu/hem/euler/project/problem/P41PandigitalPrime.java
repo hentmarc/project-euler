@@ -1,6 +1,6 @@
 package eu.hem.euler.project.problem;
 
-import static eu.hem.euler.project.util.DigitUtils.isPandigital;
+import static eu.hem.euler.project.util.DigitUtils.isPandigital1To9;
 import static eu.hem.euler.project.util.PrimeUtils.isPrime;
 import static eu.hem.euler.project.util.ProcessUtils.printDuration;
 
@@ -13,10 +13,10 @@ public class P41PandigitalPrime {
 
 	public static int maxPandigitalPrime() {
 		for (int i = 7654321; i > 1234; i -= 6) {
-			if (isPandigital(i) && isPrime(i)) {
+			if (isPandigital1To9(i) && isPrime(i)) {
 				return i;
 			}
-			if (isPandigital(i - 2) && isPrime(i - 2)) {
+			if (isPandigital1To9(i - 2) && isPrime(i - 2)) {
 				return i - 2;
 			}
 		}
