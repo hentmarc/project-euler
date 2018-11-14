@@ -41,8 +41,17 @@ public class DigitUtils {
 	public static int countDigits(BigInteger b) {
 		return b.toString().length();
 	}
+	
+	public static int valueOf(List<Integer> digits) {
+		int value = 0;
+		for (int d : digits) {
+			value *= 10;
+			value += d;
+		}
+		return value;
+	}
 
-	public static boolean isPandigital1To9(int n) {
+	public static boolean isPandigital(int n) {
 		List<Integer> digits = digits(n);
 		List<Integer> sample = IntStream.rangeClosed(1, digits.size()).boxed().collect(Collectors.toList());
 		digits.sort(null);
