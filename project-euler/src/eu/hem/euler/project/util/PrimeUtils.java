@@ -1,8 +1,10 @@
 package eu.hem.euler.project.util;
 
-import static java.lang.Math.*;
+import static java.lang.Math.ceil;
+import static java.lang.Math.sqrt;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -174,12 +176,24 @@ public class PrimeUtils {
 	}
 
 	public static int gcd(int n, int m) {
-		int gcd = 1;
 		List<Integer> factorsN = primeFactors(n);
 		List<Integer> factorsM = primeFactors(m);
-		factorsN.retainAll(factorsM);
-		gcd = factorsN.stream().reduce(1, (a, b) -> a * b);
-		return gcd;
+		return factorsN.stream().filter(f -> factorsM.remove(f)).reduce(1, (a, b) -> a * b);
 	}
 
+	public static int gcd(int... numbers) {
+		return Arrays.stream(numbers).reduce(numbers[0], (a, b) -> gcd(a, b));
+	}
+
+	public static int lcm(int n, int m) {
+		List<Integer> factorsN = primeFactors(n);
+		List<Integer> factorsM = primeFactors(m);
+		factorsN.stream().forEach(f -> factorsM.remove(f));
+		factorsN.addAll(factorsM);
+		return factorsN.stream().reduce(1, (a, b) -> a * b);
+	}
+
+	public static int lcm(int... numbers) {
+		return Arrays.stream(numbers).reduce(1, (a, b) -> lcm(a, b));
+	}
 }

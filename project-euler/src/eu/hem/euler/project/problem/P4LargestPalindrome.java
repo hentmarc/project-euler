@@ -1,5 +1,7 @@
 package eu.hem.euler.project.problem;
 
+import static eu.hem.euler.project.util.ProcessUtils.printDuration;
+
 public class P4LargestPalindrome {
 
 	public static void main(String[] args) {
@@ -14,6 +16,7 @@ public class P4LargestPalindrome {
 			}
 		}
 		System.out.println(largestPalindrome);
+		printDuration();
 	}
 	
 	public static boolean isPalindorme(int n) {
