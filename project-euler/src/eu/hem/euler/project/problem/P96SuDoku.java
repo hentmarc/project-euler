@@ -47,9 +47,6 @@ public class P96SuDoku {
 					
 					Set<Integer> candidates = getCandidates(sudoku, i, j);
 					
-					if (candidates.size() == 0) {
-						return false;
-					}
 					for (int n : candidates) {
 						sudoku[i][j] = n;
 						if (solve(sudoku)) {

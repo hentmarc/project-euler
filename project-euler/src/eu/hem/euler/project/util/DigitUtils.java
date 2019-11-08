@@ -28,7 +28,7 @@ public class DigitUtils {
 		}
 		return sum;
 	}
-
+	
 	public static BigInteger sumDigits(BigInteger b) {
 		BigInteger sum = ZERO;
 		while (b.compareTo(ZERO) == 1) {
@@ -42,6 +42,20 @@ public class DigitUtils {
 		return b.toString().length();
 	}
 	
+	public static long reverse(long n) {
+		long reverse = 0;
+		while (n > 0) {
+			reverse *= 10;
+			reverse += n % 10;
+			n /= 10;
+		}
+		return reverse;
+	}
+	
+	public static BigInteger reverse(BigInteger n) {
+		return new BigInteger(new StringBuilder(n.toString()).reverse().toString());
+	}
+
 	public static int valueOf(List<Integer> digits) {
 		int value = 0;
 		for (int d : digits) {
@@ -58,8 +72,14 @@ public class DigitUtils {
 		return sample.equals(digits);
 	}
 
-	public static boolean isPalindorme(int n) {
-		String s = Integer.toString(n);
+	public static boolean isPalindorme(long n) {
+		String s = Long.toString(n);
+		String s2 = new StringBuilder(s).reverse().toString();
+		return s.equals(s2);
+	}
+	
+	public static boolean isPalindorme(BigInteger n) {
+		String s = n.toString();
 		String s2 = new StringBuilder(s).reverse().toString();
 		return s.equals(s2);
 	}
