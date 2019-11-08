@@ -2,6 +2,7 @@ package eu.hem.euler.project.problem;
 
 import static eu.hem.euler.project.util.DigitUtils.isPalindorme;
 import static eu.hem.euler.project.util.DigitUtils.reverse;
+import static eu.hem.euler.project.util.ProcessUtils.printDuration;
 
 import java.math.BigInteger;
 
@@ -15,6 +16,7 @@ public class P55Lychrel {
 			}
 		}
 		System.out.println(count);
+		printDuration();
 	}
 
 	public static boolean isLychrel(long n) {
