@@ -1,14 +1,14 @@
 package eu.hem.euler.project.problem;
 
-import static eu.hem.euler.project.util.CombinatoricUtils.factor;
+import static eu.hem.euler.project.util.CombinatoricUtils.bigFactor;
 
 import java.math.BigInteger;
 
 public class P15LatticePath {
 
 	public static void main(String[] args) {
-		BigInteger n = factor(40L);
-		BigInteger m = factor(20L);
+		BigInteger n = bigFactor(40);
+		BigInteger m = bigFactor(20);
 
 		BigInteger permutationMultiset = n.divide(m).divide(m);
 		System.out.println(permutationMultiset); // 137846528820

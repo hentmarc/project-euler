@@ -8,8 +8,16 @@ import java.util.List;
 
 public class CombinatoricUtils {
 
-	public static BigInteger factor(long n) {
-		return n == 0 ? ONE : valueOf(n).multiply(factor(n - 1));
+	public static int factor(int n) {
+		return n == 0 ? 1 : n * factor(n - 1);
+	}
+
+	public static BigInteger bigFactor(int n) {
+		return n == 0 ? ONE : valueOf(n).multiply(bigFactor(n - 1));
+	}
+	
+	public static BigInteger combinations(int n, int r) {
+		return bigFactor(n).divide(bigFactor(r).multiply(bigFactor(n - r)));
 	}
 
 	public static List<Integer> nextPermutation(List<Integer> p) {
@@ -23,10 +31,6 @@ public class CombinatoricUtils {
 			}
 		}
 		return null;
-	}
-
-	public static int factor(int n) {
-		return n == 0 ? 1 : n * factor(n - 1);
 	}
 
 }

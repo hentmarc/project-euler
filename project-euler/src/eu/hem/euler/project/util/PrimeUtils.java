@@ -176,9 +176,7 @@ public class PrimeUtils {
 	}
 
 	public static int gcd(int n, int m) {
-		List<Integer> factorsN = primeFactors(n);
-		List<Integer> factorsM = primeFactors(m);
-		return factorsN.stream().filter(f -> factorsM.remove(f)).reduce(1, (a, b) -> a * b);
+		return m == 0 ? n : gcd(m, n % m);
 	}
 
 	public static int gcd(int... numbers) {
@@ -195,5 +193,16 @@ public class PrimeUtils {
 
 	public static int lcm(int... numbers) {
 		return Arrays.stream(numbers).reduce(1, (a, b) -> lcm(a, b));
+	}
+
+	public static int coprimes(int n) {
+		Set<Integer> factors = new HashSet<>(primeFactors(n));
+
+		double coprimes = n;
+		for (int f : factors) {
+			coprimes *= 1.0 - (1.0 / f);
+		}
+
+		return (int) coprimes;
 	}
 }
