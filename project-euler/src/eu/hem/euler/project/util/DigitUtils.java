@@ -47,6 +47,10 @@ public class DigitUtils {
 		}
 		return sum;
 	}
+	
+	public static int countDigits(long n) {
+		return String.valueOf(n).length();
+	}
 
 	public static int countDigits(BigInteger b) {
 		return b.toString().length();
