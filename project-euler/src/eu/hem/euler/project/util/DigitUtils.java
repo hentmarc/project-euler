@@ -1,5 +1,6 @@
 package eu.hem.euler.project.util;
 
+import static eu.hem.euler.project.util.CombinatoricUtils.factor;
 import static java.math.BigInteger.TEN;
 import static java.math.BigInteger.ZERO;
 
@@ -34,6 +35,15 @@ public class DigitUtils {
 		while (b.compareTo(ZERO) == 1) {
 			sum = sum.add(b.remainder(TEN));
 			b = b.divide(TEN);
+		}
+		return sum;
+	}
+	
+	public static int sumDigitFactorials(int n) {
+		int sum = 0;
+		while (n > 0) {
+			sum += factor(n % 10);
+			n /= 10;
 		}
 		return sum;
 	}
