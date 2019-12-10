@@ -30,10 +30,10 @@ public class DigitUtils {
 		return sum;
 	}
 	
-	public static BigInteger sumDigits(BigInteger b) {
-		BigInteger sum = ZERO;
+	public static int sumDigits(BigInteger b) {
+		int sum = 0;
 		while (b.compareTo(ZERO) == 1) {
-			sum = sum.add(b.remainder(TEN));
+			sum += b.remainder(TEN).intValue();
 			b = b.divide(TEN);
 		}
 		return sum;
