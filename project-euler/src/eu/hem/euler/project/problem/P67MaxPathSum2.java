@@ -1,6 +1,7 @@
 package eu.hem.euler.project.problem;
 
 import static eu.hem.euler.project.util.ProcessUtils.printDuration;
+import static java.lang.Integer.max;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,13 +12,13 @@ public class P67MaxPathSum2 {
 	private static final String PATH = "resources/p067_triangle.txt";
 
 	public static void main(String[] args) {
-		int[][] numbers = loadTriangle(PATH);
-		for (int i = numbers.length - 2; i > -1; i--) {
-			for (int j = 0; j < numbers[i].length; j++) {
-				numbers[i][j] += Integer.max(numbers[i + 1][j], numbers[i + 1][j + 1]);
+		int[][] triangle = loadTriangle(PATH);
+		for (int i = triangle.length - 2; i > -1; i--) {
+			for (int j = 0; j < triangle[i].length; j++) {
+				triangle[i][j] += max(triangle[i + 1][j], triangle[i + 1][j + 1]);
 			}
 		}
-		System.out.println(numbers[0][0]);
+		System.out.println(triangle[0][0]);
 		printDuration();
 	}
 
