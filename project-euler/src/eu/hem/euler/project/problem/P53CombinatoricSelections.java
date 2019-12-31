@@ -6,7 +6,7 @@ import static java.math.BigInteger.valueOf;
 
 import java.math.BigInteger;
 
-public class P53CombinatorcSelections {
+public class P53CombinatoricSelections {
 
 	public static void main(String[] args) {
 		BigInteger limit = valueOf(1_000_000);

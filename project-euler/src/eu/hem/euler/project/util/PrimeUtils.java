@@ -199,8 +199,8 @@ public class PrimeUtils {
 		Set<Integer> factors = new HashSet<>(primeFactors(n));
 
 		double coprimes = n;
-		for (int f : factors) {
-			coprimes *= 1.0 - (1.0 / f);
+		for (int factor : factors) {
+			coprimes *= 1.0 - (1.0 / factor);
 		}
 
 		return (int) coprimes;
