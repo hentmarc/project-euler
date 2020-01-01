@@ -37,7 +37,7 @@ public class P59XORDecription {
 
 		for (int[] key = nextKey(null); key != null; key = nextKey(key)) {
 			int goodCharsCount = 0;
-			for (int i = 0; i < 50; i++) {
+			for (int i = 0; i < 25; i++) {
 				int c = encripted.get(i) ^ key[i % 3];
 				if (checkChar(c)) {
 					goodCharsCount++;
@@ -55,13 +55,13 @@ public class P59XORDecription {
 	private static List<Integer> decript(List<Integer> encripted, int[] key) {
 		List<Integer> decripted = new ArrayList<>();
 		for (int i = 0; i < encripted.size(); i++) {
-			decripted.add(encripted.get(i) ^ key[i % 3]);
+			decripted.add(encripted.get(i) ^ key[i % key.length]);
 		}
 		return decripted;
 	}
 
 	private static boolean checkChar(int c) {
-		return (c > 96 && c < 123) || (c > 64 && c < 91) || (c == 32);
+		return (c > 96 && c < 123) || (c == 32);
 	}
 
 	private static int[] nextKey(int[] key) {
