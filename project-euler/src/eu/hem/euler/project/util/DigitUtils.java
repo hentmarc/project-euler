@@ -20,7 +20,7 @@ public class DigitUtils {
 		}
 		return digits;
 	}
-
+	
 	public static int sumDigits(long n) {
 		int sum = 0;
 		while (n > 0) {

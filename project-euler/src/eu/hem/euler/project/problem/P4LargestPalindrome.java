@@ -10,7 +10,7 @@ public class P4LargestPalindrome {
 		
 		for (int i = 999; i > 99; i--) {
 			for (int j = i; j > 99; j--) {
-				if (i * j > largestPalindrome && isPalindorme(i * j) && largestPalindrome < i * j) {
+				if (i * j > largestPalindrome && isPalindorme(i * j)) {
 					largestPalindrome = i * j;
 				}
 			}
