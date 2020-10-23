@@ -1,4 +1,4 @@
-package eu.hem.euler.project.problem;
+package eu.hem.euler.project.solution;
 
 import static eu.hem.euler.project.util.DigitUtils.countDigits;
 import static java.math.BigInteger.ONE;

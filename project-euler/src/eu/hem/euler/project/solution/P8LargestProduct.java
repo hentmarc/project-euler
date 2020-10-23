@@ -1,4 +1,4 @@
-package eu.hem.euler.project.problem;
+package eu.hem.euler.project.solution;
 
 import java.util.ArrayList;
 import java.util.Arrays;

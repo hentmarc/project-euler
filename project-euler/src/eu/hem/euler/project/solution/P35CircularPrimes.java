@@ -1,4 +1,4 @@
-package eu.hem.euler.project.problem;
+package eu.hem.euler.project.solution;
 
 import static eu.hem.euler.project.util.PrimeUtils.isPrime;
 import static eu.hem.euler.project.util.ProcessUtils.printDuration;
