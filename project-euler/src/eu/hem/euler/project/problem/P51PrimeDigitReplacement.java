@@ -1,7 +1,7 @@
 package eu.hem.euler.project.problem;
 
 import static eu.hem.euler.project.util.DigitUtils.digits;
-import static eu.hem.euler.project.util.DigitUtils.valueOf;
+import static eu.hem.euler.project.util.DigitUtils.parseInt;
 import static eu.hem.euler.project.util.PrimeUtils.isPrime;
 import static eu.hem.euler.project.util.ProcessUtils.printDuration;
 
@@ -51,7 +51,7 @@ public class P51PrimeDigitReplacement {
 				for (int d : RANGE_0_TO_9) {
 					if (Collections.frequency(digits, d) > 2) {
 						digits.removeAll(List.of(d));
-						int number = valueOf(digits);
+						int number = parseInt(digits);
 						if (!families.containsKey(number)) {
 							families.put(number, new ArrayList<>());
 						}

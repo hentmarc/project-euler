@@ -1,6 +1,6 @@
 package eu.hem.euler.project.solution;
 
-import static eu.hem.euler.project.util.DigitUtils.countDigits;
+import static eu.hem.euler.project.util.DigitUtils.length;
 import static java.math.BigInteger.ONE;
 
 import java.math.BigInteger;
@@ -12,7 +12,7 @@ public class P25Fibonacci1KDigits {
 		BigInteger f2 = ONE;
 		int index = 2;
 
-		while (countDigits(f1) < 1000) {
+		while (length(f1) < 1000) {
 			BigInteger f = f1.add(f2);
 			f2 = f1;
 			f1 = f;

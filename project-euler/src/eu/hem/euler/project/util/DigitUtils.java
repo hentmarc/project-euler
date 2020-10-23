@@ -21,6 +21,15 @@ public class DigitUtils {
 		return digits;
 	}
 	
+	public static List<Long> digits(long n) {
+		List<Long> digits = new ArrayList<>();
+		while (n > 0) {
+			digits.add(0, n % 10);
+			n /= 10;
+		}
+		return digits;
+	}
+	
 	public static int sumDigits(long n) {
 		int sum = 0;
 		while (n > 0) {
@@ -48,11 +57,11 @@ public class DigitUtils {
 		return sum;
 	}
 	
-	public static int countDigits(long n) {
+	public static int length(long n) {
 		return String.valueOf(n).length();
 	}
 
-	public static int countDigits(BigInteger b) {
+	public static int length(BigInteger b) {
 		return b.toString().length();
 	}
 	
@@ -70,9 +79,18 @@ public class DigitUtils {
 		return new BigInteger(new StringBuilder(n.toString()).reverse().toString());
 	}
 
-	public static int valueOf(List<Integer> digits) {
+	public static int parseInt(List<Integer> digits) {
 		int value = 0;
 		for (int d : digits) {
+			value *= 10;
+			value += d;
+		}
+		return value;
+	}
+	
+	public static long parseLong(List<Long> digits) {
+		long value = 0;
+		for (long d : digits) {
 			value *= 10;
 			value += d;
 		}

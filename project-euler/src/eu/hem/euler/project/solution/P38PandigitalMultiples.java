@@ -1,7 +1,7 @@
 package eu.hem.euler.project.solution;
 
 import static eu.hem.euler.project.util.DigitUtils.digits;
-import static eu.hem.euler.project.util.DigitUtils.valueOf;
+import static eu.hem.euler.project.util.DigitUtils.parseInt;
 import static eu.hem.euler.project.util.ProcessUtils.printDuration;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class P38PandigitalMultiples {
 					digits.addAll(digits(i * m));
 				}
 				if (digits.size() == SAMPLE.size() && digits.containsAll(SAMPLE)) {
-					int pandigital = valueOf(digits);
+					int pandigital = parseInt(digits);
 					pandigitals.add(pandigital);
 					// System.out.println(pandigital + " is the concatenated product of " + i + " and " + multipliers);
 				} else if (digits.size() > SAMPLE.size()) {
