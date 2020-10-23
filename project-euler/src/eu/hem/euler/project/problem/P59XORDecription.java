@@ -38,7 +38,7 @@ public class P59XORDecription {
 		for (int[] key = nextKey(null); key != null; key = nextKey(key)) {
 			int goodCharsCount = 0;
 			for (int i = 0; i < 25; i++) {
-				int c = encripted.get(i) ^ key[i % 3];
+				int c = encripted.get(i) ^ key[i % key.length];
 				if (checkChar(c)) {
 					goodCharsCount++;
 				}
