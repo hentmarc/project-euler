@@ -21,11 +21,21 @@ public class DigitUtils {
 		return digits;
 	}
 	
-	public static List<Long> digits(long n) {
-		List<Long> digits = new ArrayList<>();
+	public static List<Integer> digits(long n) {
+		List<Integer> digits = new ArrayList<>();
 		while (n > 0) {
-			digits.add(0, n % 10);
+			digits.add(0, (int) n % 10);
 			n /= 10;
+		}
+		return digits;
+	}
+	
+	public static List<Integer> digits(BigInteger n) {
+		List<Integer> digits = new ArrayList<>();
+		while (n.compareTo(BigInteger.ZERO) > 0) {
+			BigInteger[] div = (n.divideAndRemainder(BigInteger.TEN));
+			digits.add(0, div[1].intValue());
+			n = div[0];
 		}
 		return digits;
 	}

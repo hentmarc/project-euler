@@ -3,6 +3,7 @@ package eu.hem.euler.project.util;
 import static java.lang.Math.ceil;
 import static java.lang.Math.sqrt;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -178,8 +179,20 @@ public class PrimeUtils {
 	public static int gcd(int n, int m) {
 		return m == 0 ? n : gcd(m, n % m);
 	}
+	
+	public static long gcd(long n, long m) {
+		return m == 0 ? n : gcd(m, n % m);
+	}
+	
+	public static BigInteger gcd(BigInteger n, BigInteger m) {
+		return m.equals(BigInteger.ZERO) ? n : gcd(m, n.remainder(m));
+	}
 
 	public static int gcd(int... numbers) {
+		return Arrays.stream(numbers).reduce(numbers[0], (a, b) -> gcd(a, b));
+	}
+	
+	public static long gcd(long... numbers) {
 		return Arrays.stream(numbers).reduce(numbers[0], (a, b) -> gcd(a, b));
 	}
 
