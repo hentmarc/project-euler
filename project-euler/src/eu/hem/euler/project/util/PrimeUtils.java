@@ -2,11 +2,11 @@ package eu.hem.euler.project.util;
 
 import static java.lang.Math.ceil;
 import static java.lang.Math.sqrt;
+import static java.util.Collections.frequency;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -115,7 +115,7 @@ public class PrimeUtils {
 		Set<Long> distinctFactors = new HashSet<>(factors);
 
 		for (long l : distinctFactors) {
-			count *= (Collections.frequency(factors, l) + 1);
+			count *= frequency(factors, l) + 1;
 		}
 
 		return count;
@@ -179,11 +179,11 @@ public class PrimeUtils {
 	public static int gcd(int n, int m) {
 		return m == 0 ? n : gcd(m, n % m);
 	}
-	
+
 	public static long gcd(long n, long m) {
 		return m == 0 ? n : gcd(m, n % m);
 	}
-	
+
 	public static BigInteger gcd(BigInteger n, BigInteger m) {
 		return m.equals(BigInteger.ZERO) ? n : gcd(m, n.remainder(m));
 	}
@@ -191,8 +191,12 @@ public class PrimeUtils {
 	public static int gcd(int... numbers) {
 		return Arrays.stream(numbers).reduce(numbers[0], (a, b) -> gcd(a, b));
 	}
-	
+
 	public static long gcd(long... numbers) {
+		return Arrays.stream(numbers).reduce(numbers[0], (a, b) -> gcd(a, b));
+	}
+
+	public static BigInteger gcd(BigInteger... numbers) {
 		return Arrays.stream(numbers).reduce(numbers[0], (a, b) -> gcd(a, b));
 	}
 
@@ -217,5 +221,17 @@ public class PrimeUtils {
 		}
 
 		return (int) coprimes;
+	}
+	
+	public static int nextPrime(int n) {
+		if (n < 2) {
+			return 2;
+		}
+		for (int i = n + 1; i < n * 2; i++) {
+			if (isPrime(i)) {
+				return i;
+			}
+		}
+		throw new ArithmeticException();
 	}
 }
