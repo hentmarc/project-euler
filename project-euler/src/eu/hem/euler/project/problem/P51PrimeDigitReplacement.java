@@ -25,10 +25,6 @@ public class P51PrimeDigitReplacement {
 		printDuration();
 	}
 	
-	public static long primesCount(int startInclusive, int endExclusive) {
-		return IntStream.range(startInclusive, endExclusive).filter(p -> isPrime(p)).count();
-	}
-	
 	public static long primesWithDoubleDigitsCount(int startInclusive, int endExclusive) {
 		return IntStream.range(startInclusive, endExclusive).filter(p -> isPrime(p)).filter(p -> containsDoubleDigits(p)).count();
 	}

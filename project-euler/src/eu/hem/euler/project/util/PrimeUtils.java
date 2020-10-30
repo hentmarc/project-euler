@@ -10,6 +10,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class PrimeUtils {
 
@@ -233,5 +235,13 @@ public class PrimeUtils {
 			}
 		}
 		throw new ArithmeticException();
+	}
+	
+	public static long primesCount(int startInclusive, int endExclusive) {
+		return IntStream.range(startInclusive, endExclusive).filter(p -> isPrime(p)).count();
+	}
+	
+	public static List<Integer> primes(int startInclusive, int endExclusive) {
+		return IntStream.range(startInclusive, endExclusive).filter(p -> isPrime(p)).boxed().collect(Collectors.toList());
 	}
 }

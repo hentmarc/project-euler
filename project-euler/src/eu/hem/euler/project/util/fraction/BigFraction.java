@@ -1,4 +1,4 @@
-package eu.hem.euler.project.util;
+package eu.hem.euler.project.util.fraction;
 
 import static eu.hem.euler.project.util.PrimeUtils.gcd;
 import static java.util.Arrays.copyOfRange;

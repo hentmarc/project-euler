@@ -1,8 +1,8 @@
 package eu.hem.euler.project.solution;
 
-import static eu.hem.euler.project.util.BigFraction.continuedFraction;
 import static eu.hem.euler.project.util.DigitUtils.sumDigits;
 import static eu.hem.euler.project.util.ProcessUtils.printDuration;
+import static eu.hem.euler.project.util.fraction.BigFraction.continuedFraction;
 
 public class P65ConvergentsOfE {
 
