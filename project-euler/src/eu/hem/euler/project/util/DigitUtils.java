@@ -24,7 +24,7 @@ public class DigitUtils {
 	public static List<Integer> digits(long n) {
 		List<Integer> digits = new ArrayList<>();
 		while (n > 0) {
-			digits.add(0, (int) n % 10);
+			digits.add(0, (int) (n % 10));
 			n /= 10;
 		}
 		return digits;
