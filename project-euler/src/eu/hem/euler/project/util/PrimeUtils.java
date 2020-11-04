@@ -214,7 +214,7 @@ public class PrimeUtils {
 		return Arrays.stream(numbers).reduce(1, (a, b) -> lcm(a, b));
 	}
 
-	public static int coprimes(int n) {
+	public static int totient(int n) {
 		Set<Integer> factors = new HashSet<>(primeFactors(n));
 
 		double coprimes = n;
@@ -235,6 +235,15 @@ public class PrimeUtils {
 			}
 		}
 		throw new ArithmeticException();
+	}
+	
+	public static Integer previousPrime(int n) {
+		for (int i = n - 1; i > n / 2; i--) {
+			if (isPrime(i)) {
+				return i;
+			}
+		}
+		return null;
 	}
 	
 	public static long primesCount(int startInclusive, int endExclusive) {
