@@ -3,7 +3,9 @@ package eu.hem.euler.project.util;
 import static java.lang.Math.ceil;
 import static java.lang.Math.floor;
 import static java.lang.Math.sqrt;
+import static java.math.BigInteger.ONE;
 import static java.math.BigInteger.TWO;
+import static java.math.BigInteger.ZERO;
 import static java.math.BigInteger.valueOf;
 
 import java.math.BigInteger;
@@ -50,5 +52,22 @@ public class EulerUtils {
 			value += c - 'A' + 1;
 		}
 		return value;
+	}
+	
+	public static BigInteger partitions(int n) {
+		BigInteger[] partitions = new BigInteger[n + 1];
+		partitions[0] = ONE;
+
+		for (int i = 1; i < n + 1; i++) {
+			partitions[i] = ZERO;
+
+			for (int j = 1, p = (3 * j * j - j) / 2, s = 1; p <= i; j++, p = (3 * j * j - j) / 2, s *= -1) {
+				partitions[i] = partitions[i].add(partitions[i - p].multiply(valueOf(s)));
+			}
+			for (int j = 1, p = (3 * j * j + j) / 2, s = 1; p <= i; j++, p = (3 * j * j + j) / 2, s *= -1) {
+				partitions[i] = partitions[i].add(partitions[i - p].multiply(valueOf(s)));
+			}
+		}
+		return partitions[n];
 	}
 }

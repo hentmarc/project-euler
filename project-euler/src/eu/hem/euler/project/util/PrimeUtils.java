@@ -237,13 +237,13 @@ public class PrimeUtils {
 		throw new ArithmeticException();
 	}
 	
-	public static Integer previousPrime(int n) {
+	public static int previousPrime(int n) {
 		for (int i = n - 1; i > n / 2; i--) {
 			if (isPrime(i)) {
 				return i;
 			}
 		}
-		return null;
+		throw new ArithmeticException();
 	}
 	
 	public static long primesCount(int startInclusive, int endExclusive) {
