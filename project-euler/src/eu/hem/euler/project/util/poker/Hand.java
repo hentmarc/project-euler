@@ -24,7 +24,7 @@ public class Hand implements Comparable<Hand> {
 	public final String[] notation;
 	public final long value;
 	public final Rank rank;
-	public final List<Character> cardRanks = List.of('2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A');
+	private final List<Character> cardRanks = List.of('2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A');
 
 	public Hand(String[] notation) {
 		this.notation = notation;
