@@ -35,10 +35,8 @@ public class P60PrimePairSets {
 			if (primeSet.size() > 4) {
 				System.out.println(primeSet);
 				System.out.println("sum=" + primeSet.stream().reduce(0, Integer::sum));
-				if (primeSet.size() > 4) {
-					printDuration();
-					return;
-				}
+				printDuration();
+				return;
 			}
 		}
 	}

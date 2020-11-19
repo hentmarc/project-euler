@@ -37,6 +37,10 @@ public class EulerUtils {
 		return false;
 	}
 
+	public static int polygonal(int s, int n) {
+		return ((s - 2) * n * n - (s - 4) * n) / 2;
+	}
+	
 	public static boolean isTriangular(int t) {
 		// t(n) = n(n+1)/2
 		// 2t(n) = n(n+1)
