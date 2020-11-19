@@ -12,8 +12,12 @@ public class P61CyclicalFigurateNumbers {
 
 	public static void main(String[] args) {
 		List<PolygonalNumber> polygonals = new ArrayList<>();
-		IntStream.range(3, 9).forEach(s -> IntStream.range(1, 1000).mapToObj(n -> new PolygonalNumber(s, n))
-				.dropWhile(p -> p.value < 1000).takeWhile(p -> p.value < 10000).forEach(p -> polygonals.add(p)));
+		IntStream.range(3, 9).forEach(s ->
+			IntStream.range(1, 1000)
+				.mapToObj(n -> new PolygonalNumber(s, n))
+				.dropWhile(p -> p.value < 1000)
+				.takeWhile(p -> p.value < 10000)
+				.forEach(p -> polygonals.add(p)));
 
 		List<PolygonalNumber> links = new ArrayList<>();
 		findLinks(links, polygonals);
