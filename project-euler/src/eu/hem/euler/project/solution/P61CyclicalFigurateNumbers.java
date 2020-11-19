@@ -11,6 +11,7 @@ import eu.hem.euler.project.util.polygon.PolygonalNumber;
 public class P61CyclicalFigurateNumbers {
 
 	public static void main(String[] args) {
+		List<PolygonalNumber> links = new ArrayList<>();
 		List<PolygonalNumber> polygonals = new ArrayList<>();
 		IntStream.range(3, 9).forEach(s ->
 			IntStream.range(1, 1000)
@@ -19,7 +20,6 @@ public class P61CyclicalFigurateNumbers {
 				.takeWhile(p -> p.value < 10000)
 				.forEach(p -> polygonals.add(p)));
 
-		List<PolygonalNumber> links = new ArrayList<>();
 		findLinks(links, polygonals);
 
 		System.out.println("sum" + links + "=" + links.stream().mapToInt(p -> p.value).sum());
