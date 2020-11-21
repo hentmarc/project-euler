@@ -6,6 +6,7 @@ import static java.util.Arrays.copyOfRange;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
+import java.util.List;
 
 public class BigFraction {
 
@@ -27,36 +28,40 @@ public class BigFraction {
 		this.d = d.divide(gcd);
 	}
 
-	public static BigFraction add(BigFraction f, BigFraction g) {
-		return new BigFraction(f.n.multiply(g.d).add(g.n.multiply(f.d)), f.d.multiply(g.d));
+	public BigFraction add(BigFraction f) {
+		return new BigFraction(this.n.multiply(f.d).add(f.n.multiply(this.d)), this.d.multiply(f.d));
 	}
 
-	public static BigFraction subtract(BigFraction f, BigFraction g) {
-		return new BigFraction(f.n.multiply(g.d).subtract(g.n.multiply(f.d)), f.d.multiply(g.d));
+	public BigFraction subtract(BigFraction f) {
+		return new BigFraction(this.n.multiply(f.d).subtract(f.n.multiply(this.d)), this.d.multiply(f.d));
 	}
 
-	public static BigFraction multiply(BigFraction f, BigFraction g) {
-		return new BigFraction(f.n.multiply(g.n), f.d.multiply(g.d));
+	public BigFraction multiply(BigFraction f) {
+		return new BigFraction(this.n.multiply(f.n), this.d.multiply(f.d));
 	}
 
-	public static BigFraction divide(BigFraction f, BigFraction g) {
-		return new BigFraction(f.n.multiply(g.d), f.d.multiply(g.n));
+	public BigFraction divide(BigFraction f) {
+		return new BigFraction(this.n.multiply(f.d), this.d.multiply(f.n));
 	}
 
-	public static BigFraction reciprocal(BigFraction f) {
-		return new BigFraction(f.d, f.n);
+	public BigFraction reciprocal() {
+		return new BigFraction(this.d, this.n);
+	}
+
+	public static BigFraction continuedFraction(List<Integer> sequence) {
+		return continuedFraction(sequence.stream().mapToInt(Integer::intValue).toArray());
 	}
 
 	public static BigFraction continuedFraction(int... parts) {
 		if (parts.length == 1) {
 			return new BigFraction(BigInteger.valueOf(parts[0]));
 		}
-		return add(new BigFraction(BigInteger.valueOf(parts[0])),
-				reciprocal(continuedFraction(copyOfRange(parts, 1, parts.length))));
+		return new BigFraction(BigInteger.valueOf(parts[0]))
+				.add(continuedFraction(copyOfRange(parts, 1, parts.length)).reciprocal());
 	}
 
-	public static BigDecimal valueOf(BigFraction f) {
-		return new BigDecimal(f.n).divide(new BigDecimal(f.d), 30, RoundingMode.HALF_UP);
+	public BigDecimal parseBigDecimal() {
+		return new BigDecimal(this.n).divide(new BigDecimal(this.d), 30, RoundingMode.HALF_UP);
 	}
 
 	@Deprecated
@@ -99,7 +104,7 @@ public class BigFraction {
 
 	@Override
 	public String toString() {
-		return n + "/" + d + " ~= " + valueOf(this);
+		return n + "/" + d + " ~= " + parseBigDecimal();
 	}
 
 }

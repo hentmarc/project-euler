@@ -1,10 +1,14 @@
 package eu.hem.euler.project.util.fraction;
 
 import static eu.hem.euler.project.util.PrimeUtils.gcd;
+import static java.lang.Math.sqrt;
 import static java.util.Arrays.copyOfRange;
 
+import static java.math.BigDecimal.valueOf;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Fraction {
 
@@ -26,37 +30,59 @@ public class Fraction {
 		this.d = d / gcd;
 	}
 
-	public static Fraction add(Fraction f, Fraction g) {
-		return new Fraction(f.n * g.d + g.n * f.d, f.d * g.d);
+	public Fraction add(Fraction f) {
+		return new Fraction(this.n * f.d + f.n * this.d, this.d * f.d);
 	}
 
-	public static Fraction subtract(Fraction f, Fraction g) {
-		return new Fraction(f.n * g.d - g.n * f.d, f.d * g.d);
+	public Fraction subtract(Fraction f) {
+		return new Fraction(this.n * f.d - f.n * this.d, this.d * f.d);
 	}
 
-	public static Fraction multiply(Fraction f, Fraction g) {
-		return new Fraction(f.n * g.n, f.d * g.d);
+	public Fraction multiply(Fraction f) {
+		return new Fraction(this.n * f.n, this.d * f.d);
 	}
 
-	public static Fraction divide(Fraction f, Fraction g) {
-		return new Fraction(f.n * g.d, f.d * g.n);
+	public Fraction divide(Fraction f) {
+		return new Fraction(this.n * f.d, this.d * f.n);
 	}
 
-	public static Fraction reciprocal(Fraction f) {
-		return new Fraction(f.d, f.n);
+	public Fraction reciprocal() {
+		return new Fraction(this.d, this.n);
+	}
+	
+	public static Fraction continuedFraction(List<Integer> sequence) {
+		return continuedFraction(sequence.stream().mapToInt(Integer::intValue).toArray());
 	}
 
-	public static Fraction continuedFraction(int... parts) {
-		if (parts.length == 1) {
-			return new Fraction(parts[0]);
+	public static Fraction continuedFraction(int... sequence) {
+		if (sequence.length == 1) {
+			return new Fraction(sequence[0]);
 		}
-		return add(new Fraction(parts[0]), reciprocal(continuedFraction(copyOfRange(parts, 1, parts.length))));
+		return new Fraction(sequence[0]).add(continuedFraction(copyOfRange(sequence, 1, sequence.length)).reciprocal());
+	}
+	
+	public static List<Integer> continuedFractionSequence(int n) {
+		int sqrt = (int) sqrt(n);
+		List<Integer> sequence = new ArrayList<>();
+		sequence.add(sqrt);
+
+		if (sqrt * sqrt != n) {
+			int m = 0;
+			int d = 1;
+			int a = sqrt;
+
+			while (a != sqrt * 2) {
+				m = d * a - m;
+				d = (n - m * m) / d;
+				a = (sqrt + m) / d;
+				sequence.add(a);
+			}
+		}
+		return sequence;
 	}
 
-	public static BigDecimal valueOf(Fraction f) {
-		BigDecimal nominator = BigDecimal.valueOf(f.n);
-		BigDecimal denominator = BigDecimal.valueOf(f.d);
-		return nominator.divide(denominator, 10, RoundingMode.HALF_UP);
+	public BigDecimal parseBigDecimal() {
+		return valueOf(this.n).divide(valueOf(this.d), 20, RoundingMode.HALF_UP);
 	}
 
 	@Deprecated
@@ -93,7 +119,7 @@ public class Fraction {
 
 	@Override
 	public String toString() {
-		return n + "/" + d + " ~= " + valueOf(this);
+		return n + "/" + d + " ~= " + parseBigDecimal();
 	}
 
 }
