@@ -13,7 +13,7 @@ public class P92SquareDigitChains {
 		Set<Integer> chainsTo89 = range(2, 568).filter(n -> chainsTo89(n)).boxed().collect(toSet());
 
 		int count = 0;
-		count += chainsTo89.size();//
+		count += chainsTo89.size();
 		count += range(568, 10_000_000).filter(n -> chainsTo89.contains(sumSquaredDigits(n))).count();
 
 		System.out.println(count);
