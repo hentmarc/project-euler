@@ -16,17 +16,17 @@ public class P81PathSum2Ways {
 		printDuration();
 	}
 	
-	public static int minPathSum(int[][] m) {
-		for (int i = 1; i < m.length; i++) {
-			m[i][0] += m[i - 1][0];
-			m[0][i] += m[0][i - 1];
+	public static int minPathSum(int[][] matrix) {
+		for (int i = 1; i < matrix.length; i++) {
+			matrix[i][0] += matrix[i - 1][0];
+			matrix[0][i] += matrix[0][i - 1];
 		}
-		for (int i = 1; i < m.length; i++) {
-			for (int j = 1; j < m.length; j++) {
-				m[i][j] += m[i][j - 1] < m[i - 1][j] ? m[i][j - 1] : m[i - 1][j];
+		for (int i = 1; i < matrix.length; i++) {
+			for (int j = 1; j < matrix.length; j++) {
+				matrix[i][j] += matrix[i][j - 1] < matrix[i - 1][j] ? matrix[i][j - 1] : matrix[i - 1][j];
 			}
 		}
-		return m[m.length - 1][m.length - 1];
+		return matrix[matrix.length - 1][matrix.length - 1];
 	}
 	
 	private static int[][] loadMatrix(String path) {
