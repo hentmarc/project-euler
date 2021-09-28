@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class P82PathSum4Ways {
+public class P83PathSum4Ways {
 
 	public static final String PATH = "resources/p082_matrix.txt";
 	public static final int SIZE = 80;
