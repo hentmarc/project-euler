@@ -12,7 +12,7 @@ public class P81PathSum2Ways {
 	private static final int SIZE = 80;
 	
 	public static void main(String[] args) {
-		System.out.println(minPathSum(loadMatrix(PATH)));
+		System.out.println(minPathSum(loadMatrix(PATH, SIZE)));
 		printDuration();
 	}
 	
@@ -29,13 +29,12 @@ public class P81PathSum2Ways {
 		return matrix[matrix.length - 1][matrix.length - 1];
 	}
 	
-	private static int[][] loadMatrix(String path) {
-		int[][] matrix = new int[SIZE][SIZE];
+	private static int[][] loadMatrix(String path, int size) {
+		int[][] matrix = new int[size][size];
 		try (Scanner sc = new Scanner(new File(path))) {
-			
-			for (int i = 0; i < SIZE && sc.hasNext(); i++) {
+			for (int i = 0; i < size && sc.hasNextLine(); i++) {
 				String[] line = sc.nextLine().split(",");
-				for (int j = 0; j < SIZE; j++) {
+				for (int j = 0; j < size; j++) {
 					matrix[i][j] = Integer.valueOf(line[j]);
 				}
 			}
