@@ -1,4 +1,4 @@
-package eu.hem.euler.project.util.polygon;
+package eu.hem.euler.project.polygon;
 
 import static eu.hem.euler.project.util.EulerUtils.polygonal;
 

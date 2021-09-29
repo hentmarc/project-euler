@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import eu.hem.euler.project.util.polygon.PolygonalNumber;
+import eu.hem.euler.project.polygon.PolygonalNumber;
 
 public class P61CyclicalFigurateNumbers {
 

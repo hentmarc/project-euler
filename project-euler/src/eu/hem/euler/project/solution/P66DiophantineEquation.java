@@ -1,8 +1,8 @@
 package eu.hem.euler.project.solution;
 
+import static eu.hem.euler.project.fraction.BigFraction.continuedFraction;
+import static eu.hem.euler.project.fraction.Fraction.continuedFractionSequence;
 import static eu.hem.euler.project.util.ProcessUtils.printDuration;
-import static eu.hem.euler.project.util.fraction.BigFraction.continuedFraction;
-import static eu.hem.euler.project.util.fraction.Fraction.continuedFractionSequence;
 import static java.lang.Math.sqrt;
 import static java.math.BigInteger.ZERO;
 

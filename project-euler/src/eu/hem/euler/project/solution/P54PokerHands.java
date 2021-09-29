@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import eu.hem.euler.project.util.poker.Hand;
+import eu.hem.euler.project.poker.Hand;
 
 public class P54PokerHands {
 

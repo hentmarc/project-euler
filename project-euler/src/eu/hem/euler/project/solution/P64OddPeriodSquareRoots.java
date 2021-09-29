@@ -1,7 +1,7 @@
 package eu.hem.euler.project.solution;
 
+import static eu.hem.euler.project.fraction.Fraction.continuedFractionSequence;
 import static eu.hem.euler.project.util.ProcessUtils.printDuration;
-import static eu.hem.euler.project.util.fraction.Fraction.continuedFractionSequence;
 import static java.util.stream.IntStream.range;
 
 public class P64OddPeriodSquareRoots {

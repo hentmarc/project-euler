@@ -1,15 +1,15 @@
-package eu.hem.euler.project.util.poker;
+package eu.hem.euler.project.poker;
 
-import static eu.hem.euler.project.util.poker.Hand.Rank.FLUSH;
-import static eu.hem.euler.project.util.poker.Hand.Rank.FOUR_OF_A_KIND;
-import static eu.hem.euler.project.util.poker.Hand.Rank.FULL_HOUSE;
-import static eu.hem.euler.project.util.poker.Hand.Rank.HIGH_CARD;
-import static eu.hem.euler.project.util.poker.Hand.Rank.ONE_PAIR;
-import static eu.hem.euler.project.util.poker.Hand.Rank.ROLYAL_FLUSH;
-import static eu.hem.euler.project.util.poker.Hand.Rank.STRAIGHT;
-import static eu.hem.euler.project.util.poker.Hand.Rank.STRAIGHT_FLUSH;
-import static eu.hem.euler.project.util.poker.Hand.Rank.THREE_OF_A_KIND;
-import static eu.hem.euler.project.util.poker.Hand.Rank.TWO_PAIRS;
+import static eu.hem.euler.project.poker.Hand.Rank.FLUSH;
+import static eu.hem.euler.project.poker.Hand.Rank.FOUR_OF_A_KIND;
+import static eu.hem.euler.project.poker.Hand.Rank.FULL_HOUSE;
+import static eu.hem.euler.project.poker.Hand.Rank.HIGH_CARD;
+import static eu.hem.euler.project.poker.Hand.Rank.ONE_PAIR;
+import static eu.hem.euler.project.poker.Hand.Rank.ROLYAL_FLUSH;
+import static eu.hem.euler.project.poker.Hand.Rank.STRAIGHT;
+import static eu.hem.euler.project.poker.Hand.Rank.STRAIGHT_FLUSH;
+import static eu.hem.euler.project.poker.Hand.Rank.THREE_OF_A_KIND;
+import static eu.hem.euler.project.poker.Hand.Rank.TWO_PAIRS;
 
 import java.util.Arrays;
 import java.util.Collections;
