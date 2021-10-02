@@ -10,6 +10,8 @@ public class MatrixShortestPath {
 	private int dim;
 	private Entry[][] matrix;
 	private PriorityQueue<Entry> unvisited;
+	private Entry source;
+	private Entry target;
 
 	public MatrixShortestPath(int[][] matrix) {
 		this.dim = matrix.length;
@@ -18,12 +20,13 @@ public class MatrixShortestPath {
 		IntStream.range(0, dim)
 			.forEach(i -> IntStream.range(0, dim)
 					.forEach(j -> this.matrix[i][j] = new Entry(i, j, matrix[i][j])));
+		this.source = this.matrix[0][0];
+		this.target = this.matrix[dim - 1][dim - 1];
 	}
 
 	public int getShortestPathSum() {
-		matrix[0][0].distance = matrix[0][0].value;
-		unvisited.add(matrix[0][0]);
-		Entry target = matrix[dim - 1][dim - 1];
+		source.distance = matrix[0][0].value;
+		unvisited.add(source);
 		unvisited.add(target);
 		
 		while (unvisited.contains(target)) {
@@ -44,7 +47,7 @@ public class MatrixShortestPath {
 	@Override
 	public String toString() {
 		int[][] path = new int[dim][dim];
-		for (Entry e = matrix[dim - 1][dim - 1]; e != null; e = e.previous) {
+		for (Entry e = target; e != null; e = e.previous) {
 			path[e.i][e.j] = 1;
 		}
 		StringBuilder sb = new StringBuilder();
