@@ -16,20 +16,20 @@ public class P757StealthyNumbers {
 	public static long stealthyCount(long limit) {
 		long count = 0;
 		long prev = 0;
-		PriorityQueue<Node> queue = new PriorityQueue<>();
-		queue.add(new Node(1, 1));
+		PriorityQueue<Stealthy> queue = new PriorityQueue<>();
+		queue.add(new Stealthy(1, 1));
 
 		while (!queue.isEmpty()) {
-			Node n = queue.poll();
-			count += n.value > prev ? 1 : 0;
-			prev = n.value;
+			Stealthy s = queue.poll();
+			count += s.value > prev ? 1 : 0;
+			prev = s.value;
 
-			Node next = new Node(n.i, n.j + 1);
+			Stealthy next = new Stealthy(s.i, s.j + 1);
 			if (next.value < limit) {
 				queue.add(next);
 			}
-			if (n.i == n.j) {
-				Node next2 = new Node(n.i + 1, n.j + 1);
+			if (s.i == s.j) {
+				Stealthy next2 = new Stealthy(s.i + 1, s.j + 1);
 				if (next2.value < limit) {
 					queue.add(next2);
 				}
@@ -38,12 +38,12 @@ public class P757StealthyNumbers {
 		return count;
 	}
 
-	public static class Node implements Comparable<Node> {
+	public static class Stealthy implements Comparable<Stealthy> {
 		private long value;
 		private long i;
 		private long j;
 
-		public Node(long i, long j) {
+		public Stealthy(long i, long j) {
 			this.i = i;
 			this.j = j;
 			this.value = stealthy(i, j);
@@ -54,7 +54,7 @@ public class P757StealthyNumbers {
 		}
 
 		@Override
-		public int compareTo(Node o) {
+		public int compareTo(Stealthy o) {
 			return Long.valueOf(this.value).compareTo(o.value);
 		}
 	}
