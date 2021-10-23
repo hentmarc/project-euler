@@ -1,7 +1,6 @@
 package eu.hem.euler.project.solution;
 
 import static eu.hem.euler.project.util.ProcessUtils.printDuration;
-import static java.lang.Math.sqrt;
 
 import java.util.PriorityQueue;
 
@@ -13,18 +12,18 @@ public class P757StealthyNumbers {
 		System.out.println(stealthyCount(LIMIT));
 		printDuration();
 	}
-	
+
 	public static long stealthyCount(long limit) {
 		long count = 0;
 		long prev = 0;
 		PriorityQueue<Node> queue = new PriorityQueue<>();
 		queue.add(new Node(1, 1));
-		
-		while(!queue.isEmpty()) {
+
+		while (!queue.isEmpty()) {
 			Node n = queue.poll();
 			count += n.value > prev ? 1 : 0;
 			prev = n.value;
-			
+
 			Node next = new Node(n.i, n.j + 1);
 			if (next.value < limit) {
 				queue.add(next);
@@ -38,12 +37,12 @@ public class P757StealthyNumbers {
 		}
 		return count;
 	}
-	
+
 	public static class Node implements Comparable<Node> {
 		private long value;
 		private long i;
 		private long j;
-		
+
 		public Node(long i, long j) {
 			this.i = i;
 			this.j = j;
