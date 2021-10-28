@@ -7,6 +7,7 @@ import static java.util.Collections.frequency;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.BitSet;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -224,7 +225,7 @@ public class PrimeUtils {
 
 		return (int) coprimes;
 	}
-	
+
 	public static int nextPrime(int n) {
 		if (n < 2) {
 			return 2;
@@ -236,7 +237,7 @@ public class PrimeUtils {
 		}
 		throw new ArithmeticException();
 	}
-	
+
 	public static int previousPrime(int n) {
 		for (int i = n - 1; i > n / 2; i--) {
 			if (isPrime(i)) {
@@ -245,12 +246,26 @@ public class PrimeUtils {
 		}
 		throw new ArithmeticException();
 	}
-	
+
 	public static long primesCount(int startInclusive, int endExclusive) {
 		return IntStream.range(startInclusive, endExclusive).filter(p -> isPrime(p)).count();
 	}
-	
+
 	public static List<Integer> primes(int startInclusive, int endExclusive) {
-		return IntStream.range(startInclusive, endExclusive).filter(p -> isPrime(p)).boxed().collect(Collectors.toList());
+		return IntStream.range(startInclusive, endExclusive).filter(p -> isPrime(p)).boxed()
+				.collect(Collectors.toList());
+	}
+
+	public static BitSet primes(int limit) {
+		BitSet primes = new BitSet(limit);
+		primes.flip(2, primes.size() - 1);
+		for (int i = 2; i < sqrt(limit) + 1; i++) {
+			if (primes.get(i)) {
+				for (int j = i * i; j < primes.size(); j += i) {
+					primes.set(j, false);
+				}
+			}
+		}
+		return primes;
 	}
 }
