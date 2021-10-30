@@ -14,14 +14,13 @@ import java.util.List;
 import java.util.Set;
 
 public class P68Magic5GonRing {
-
+	
 	public static void main(String[] args) {
 		System.out.println(getMagicRingSolutions(5)
 						.stream()
 						.filter(a -> a < pow(10, 16))
 						.max(naturalOrder())
 						.get());
-
 		printDuration();
 	}
 
@@ -44,18 +43,18 @@ public class P68Magic5GonRing {
 						fill[i * 3] = p.get(i);
 						fill[i * 3 + 1] = q.get(i);
 						fill[i * 3 + 2] = q.get((i + 1) % size);
-						if (check(fill)) {
-							StringBuilder sb = new StringBuilder();
-							Arrays.stream(fill).forEach(a -> sb.append(String.valueOf(a)));
-							solutions.add(Long.valueOf(sb.toString()));
-						}
+					}
+					if (check(fill)) {
+						StringBuilder sb = new StringBuilder();
+						Arrays.stream(fill).forEach(a -> sb.append(String.valueOf(a)));
+						solutions.add(Long.valueOf(sb.toString()));
 					}
 				}
 			}
 		}
 		return solutions;
 	}
-
+	
 	public static boolean check(long[] fill) {
 		long sum = fill[0] + fill[1] + fill[2];
 		for (int i = 3; i < fill.length; i += 3) {
