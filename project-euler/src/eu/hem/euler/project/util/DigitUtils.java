@@ -4,6 +4,7 @@ import static eu.hem.euler.project.util.CombinatoricUtils.factor;
 import static java.math.BigInteger.TEN;
 import static java.math.BigInteger.ZERO;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +55,16 @@ public class DigitUtils {
 		while (b.compareTo(ZERO) == 1) {
 			sum += b.remainder(TEN).intValue();
 			b = b.divide(TEN);
+		}
+		return sum;
+	}
+	
+	public static int sumDigits(BigDecimal d) {
+		int sum = 0;
+		for (char c : d.toPlainString().toCharArray()) {
+			if (c != '.') {
+				sum += c - '0';
+			}
 		}
 		return sum;
 	}

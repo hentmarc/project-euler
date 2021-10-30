@@ -61,7 +61,7 @@ public class BigFraction {
 	}
 
 	public BigDecimal parseBigDecimal() {
-		return new BigDecimal(this.n).divide(new BigDecimal(this.d), 30, RoundingMode.HALF_UP);
+		return new BigDecimal(this.n).divide(new BigDecimal(this.d), 100, RoundingMode.HALF_UP);
 	}
 
 	@Deprecated
