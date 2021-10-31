@@ -1,10 +1,15 @@
 package eu.hem.euler.project.solution;
 
-import static java.util.stream.IntStream.range;
+import static eu.hem.euler.project.util.ProcessUtils.printDuration;
 
 public class P1Multiples3n5 {
 
 	public static void main(String[] args) {
-		System.out.println(range(1, 1000).filter(n -> n % 3 == 0 || n % 5 == 0).sum());
+		int i = (999 / 3) * (3 + 999) / 2;
+		int j = (995 / 5) * (5 + 995) / 2;
+		int k = (990 / 15) * (15 + 990) / 2;
+
+		System.out.println(i + j - k);
+		printDuration();
 	}
 }
