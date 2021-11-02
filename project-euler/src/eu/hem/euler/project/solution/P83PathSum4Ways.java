@@ -18,12 +18,9 @@ public class P83PathSum4Ways {
 
 	public static void main(String[] args) {
 		int[][] matrix = loadMatrix(PATH, SIZE);
-//		int[][] matrix = TEST_MATRIX;
 		MatrixShortestPath matrixShortestPath = new MatrixShortestPath(matrix);
 		int sum = matrixShortestPath.getShortestPathSum();
-//		int sum = minPathSum(matrix);
 		System.out.println(sum);
-//		System.out.println(matrixShortestPath);
 		printDuration();
 	}
 
