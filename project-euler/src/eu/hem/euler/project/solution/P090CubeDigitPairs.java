@@ -16,36 +16,20 @@ public class P090CubeDigitPairs {
 	public static void main(String[] args) {
 		List<Set<Integer>> combinations = new ArrayList<>(
 				getCombinations(IntStream.range(0, 10).boxed().collect(Collectors.toSet()), 6));
+		
+		combinations.stream().filter(c -> c.contains(6) || c.contains(9)).forEach(c -> c.addAll(Set.of(6, 9)));
 
-		int count = 0;
-		for (int i = 0; i < combinations.size(); i++) {
-			for (int j = i; j < combinations.size(); j++) {
-				count += check(combinations.get(i), combinations.get(j)) ? 1 : 0;
-			}
-		}
-		System.out.println(count);
-
+		System.out.println(
+				IntStream.range(0, combinations.size())
+				.map(i -> (int) IntStream.range(i, combinations.size())
+						.filter(j -> SQUARES.stream()
+								.allMatch(s -> 
+									(combinations.get(i).contains(s / 10) && combinations.get(j).contains(s % 10))	||
+									(combinations.get(i).contains(s % 10) && combinations.get(j).contains(s / 10)))
+								)
+						.count())
+				.sum());
+		
 		printDuration();
-	}
-
-	private static boolean check(Set<Integer> cube1, Set<Integer> cube2) {
-		extend(cube1);
-		extend(cube2);
-		for (int square : SQUARES) {
-			if (!(cube1.contains(square / 10) && cube2.contains(square % 10))
-					&& !(cube1.contains(square % 10) && cube2.contains(square / 10))) {
-				return false;
-			}
-		}
-		return true;
-	}
-
-	private static void extend(Set<Integer> cube) {
-		if (cube.contains(6)) {
-			cube.add(9);
-		}
-		if (cube.contains(9)) {
-			cube.add(6);
-		}
 	}
 }
