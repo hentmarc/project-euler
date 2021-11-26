@@ -8,8 +8,7 @@ import static java.util.stream.IntStream.range;
 public class P88ProductSumNumbers {
 
 	public static final int N = 12000;
-	public static int iterations = 0;
-
+	
 	public static void main(String[] args) {
 		int[] minProdSums = range(0, N + 1).map(a -> a < 2 ? 0 : 2 * a).toArray();
 		minProdSum(1, 1, N, minProdSums);
