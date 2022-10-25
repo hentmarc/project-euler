@@ -55,7 +55,11 @@ public class CombinatoricUtils {
 		return permutations;
 	}
 
-	public static BigInteger combinations(int n, int k) {
+	public static int combinations(int n, int k) {
+		return factor(n) / (factor(k) * factor(n - k));
+	}
+	
+	public static BigInteger bigCombinations(int n, int k) {
 		return bigFactor(n).divide(bigFactor(k).multiply(bigFactor(n - k)));
 	}
 

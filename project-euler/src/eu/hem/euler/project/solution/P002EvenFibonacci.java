@@ -7,14 +7,10 @@ public class P002EvenFibonacci {
 		int sum = 0;
 
 		for (int i = 1, j = 1, k = 2; j < 4_000_001; i = j, j = k, k = i + j) {
-
-			if (k % 2 == 0) {
-				sum += k;
-			}
+			sum += k % 2 == 0 ? k : 0;
 		}
 		
-		System.out.println("Sum = " + sum);
-//		Sum = 4613732
+		System.out.println(sum);
 	}
 
 }
