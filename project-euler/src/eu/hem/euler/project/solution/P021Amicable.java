@@ -1,6 +1,6 @@
 package eu.hem.euler.project.solution;
 
-import static eu.hem.euler.project.util.PrimeUtils.*;
+import static eu.hem.euler.project.util.PrimeUtils.sumOfProperDivisors;
 
 import java.util.ArrayList;
 import java.util.HashMap;

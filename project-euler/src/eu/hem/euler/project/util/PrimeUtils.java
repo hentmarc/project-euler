@@ -192,6 +192,16 @@ public class PrimeUtils {
 
 		return sum;
 	}
+	
+	public static int[] sumsOfProperDivisors(int limit) {
+		int[] sums = new int[limit];
+		for (int i = 1; i < limit; i++) {
+			for (int j = 2 * i; j < limit; j += i) {
+				sums[j] += i;
+			}
+		}
+		return sums;
+	}
 
 	public static boolean isPerfect(int n) {
 		return sumOfProperDivisors(n) == n;
