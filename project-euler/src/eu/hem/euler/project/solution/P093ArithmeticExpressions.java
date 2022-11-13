@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class P093ArithmeticExpressions {
-
+	
 	public static void main(String[] args) {
 		Set<Integer> digits = Set.of(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
 		List<Character> operators = List.of('+', '-', '*', '/');
@@ -17,13 +17,13 @@ public class P093ArithmeticExpressions {
 
 		int max = 0;
 		Set<Integer> longest = new HashSet<>();
-		
+
 		for (Set<Integer> combination : combinations) {
 			List<Double> numbers = combination.stream().map(n -> (double) n).collect(Collectors.toList());
 			Set<Integer> results = new HashSet<>();
-			
+
 			createExpressions(numbers, operators, results);
-			
+
 			int consecutive = 0;
 			for (int i = 1; results.contains(i); i++) {
 				consecutive = i;
@@ -33,10 +33,11 @@ public class P093ArithmeticExpressions {
 				longest = combination;
 			}
 		}
-		System.out.println(longest.stream().sorted().collect(Collectors.toList()) + " " + max);
+		longest.stream().sorted().forEach(System.out::print);
+		System.out.println();
 		printDuration();
 	}
-	
+
 	public static void createExpressions(List<Double> numbers, List<Character> operators, Set<Integer> results) {
 		if (numbers.size() > 1) {
 			for (double n : numbers) {
@@ -45,7 +46,8 @@ public class P093ArithmeticExpressions {
 						for (char o : operators) {
 							if (o != '/' || m != 0) {
 								double result = calculate(n, o, m);
-								List<Double> newNumbers = numbers.stream().filter(a -> a != n && a != m).collect(Collectors.toList());
+								List<Double> newNumbers = numbers.stream().filter(a -> a != n && a != m)
+										.collect(Collectors.toList());
 								newNumbers.add(result);
 								createExpressions(newNumbers, operators, results);
 							}
@@ -61,7 +63,7 @@ public class P093ArithmeticExpressions {
 			}
 		}
 	}
-	
+
 	public static double calculate(double arg1, char operator, double arg2) {
 		switch (operator) {
 		case '+':
