@@ -1,9 +1,10 @@
 package eu.hem.euler.project.solution;
 
 import static eu.hem.euler.project.util.CombinatoricUtils.getCombinations;
-import static eu.hem.euler.project.util.ProcessUtils.printDuration;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -11,21 +12,22 @@ import java.util.stream.IntStream;
 public class P093ArithmeticExpressions {
 	
 	public static void main(String[] args) {
-		Set<Integer> digits = IntStream.range(0, 10).boxed().collect(Collectors.toSet());
-		Set<Character> operators = Set.of('+', '-', '*', '/');
-		Set<Set<Integer>> combinations = getCombinations(digits, 4);
+		long start = System.currentTimeMillis();
 
-		int max = 0;
+		Set<Integer> digits = IntStream.range(0, 10).boxed().collect(Collectors.toSet());
+		Set<Set<Integer>> combinations = getCombinations(digits, 4);
+		double max = 0;
 		Set<Integer> longest = new HashSet<>();
 
 		for (Set<Integer> combination : combinations) {
-			Set<Double> numbers = combination.stream().map(n -> (double) n).collect(Collectors.toSet());
-			Set<Integer> results = new HashSet<>();
+			List<Double> numbers = combination.stream().map(n -> Double.valueOf(n)).collect(Collectors.toList());
+			Set<List<Double>> results = new HashSet<>();
+			results.add(numbers);
+			results = reduce(results);
+			Set<Double> result = results.stream().map(a -> a.get(0)).collect(Collectors.toSet());
 
-			createExpressions(numbers, operators, results);
-			
-			int consecutive = 0;
-			while (results.contains(consecutive + 1)) {
+			double consecutive = 0;
+			while (result.contains(consecutive + 1)) {
 				consecutive++;
 			}
 			if (consecutive > max) {
@@ -35,48 +37,43 @@ public class P093ArithmeticExpressions {
 		}
 		longest.stream().sorted().forEach(System.out::print);
 		System.out.println();
-		printDuration();
+		System.out.println("duration=" + (System.currentTimeMillis() - start));
 	}
 
-	public static void createExpressions(Set<Double> numbers, Set<Character> operators, Set<Integer> results) {
-		if (numbers.size() > 1) {
-			for (double n : numbers) {
-				for (double m : numbers) {
-					if (m != n) {
-						for (char o : operators) {
-							if (o != '/' || m != 0) {
-								double result = calculate(n, o, m);
-								Set<Double> newNumbers = numbers.stream().filter(a -> a != n && a != m)
-										.collect(Collectors.toSet());
-								newNumbers.add(result);
-								createExpressions(newNumbers, operators, results);
-							}
-						}
+	public static Set<List<Double>> reduce(Set<List<Double>> results) {
+		if (results.iterator().next().size() == 1) {
+			return results;
+		}
+		Set<List<Double>> reduced = new HashSet<>();
+		for (List<Double> numbers : results) {
+			for (int i = 0; i < numbers.size(); i++) {
+				double a = numbers.get(i);
+				for (int j = i + 1; j < numbers.size(); j++) {
+					double b = numbers.get(j);
+					List<Double> base = new ArrayList<>(numbers);
+					base.remove(a);
+					base.remove(b);
+					for (double r : calculate(a, b)) {
+						List<Double> result = new ArrayList<>(base);
+						result.add(r);
+						reduced.add(result);
 					}
 				}
 			}
-		} else {
-			double result = numbers.iterator().next();
-			if (result > 0) {
-				int intResult = (int) result;
-				if (intResult == result) {
-					results.add(intResult);
-				}
-			}
 		}
+		return reduce(reduced);
 	}
 
-	public static double calculate(double arg1, char operator, double arg2) {
-		switch (operator) {
-		case '+':
-			return arg1 + arg2;
-		case '-':
-			return arg1 - arg2;
-		case '*':
-			return arg1 * arg2;
-		case '/':
-			return arg1 / arg2;
+	public static Set<Double> calculate(double a, double b) {
+		Set<Double> results = new HashSet<>();
+		results.add(a + b);
+		results.add(a * b);
+		results.add(a - b);
+		results.add(b - a);
+		if (a != 0 && b != 0) {
+			results.add(a / b);
+			results.add(b / a);
 		}
-		return 0;
+		return results;
 	}
 }
